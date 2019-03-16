@@ -2,7 +2,16 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 
-bot = ChatBot("Alfred")
+bot = ChatBot(
+	"Alfred",
+	logic_adapters=[
+		{
+		    'import_path': 'chatterbot.logic.BestMatch',
+		    'default_response': 'Desculpe, não entendi.',
+		    'maximum_similarity_threshold': 0.90
+		}
+	]
+)
 
 dialogos = [
   'oi', 'olá', 'como vai', 'tudo bem?', 'tudo bem, e com você?', 'eu estou bem', 'em que posso ajudar?',
